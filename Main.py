@@ -104,7 +104,7 @@ class Miner:
 
 		for nonce in xrange(self.max_nonce):
 
-			# encode 32-bit nonce value
+			# encode 32-bit nonce valu
 			nonce_bin = struct.pack("<I", nonce)
 
 			# hash final 4b, the nonce value
@@ -134,7 +134,7 @@ class Miner:
 				return (nonce + 1, nonce_bin)
 			else:
 				print time.asctime(), "PROOF-OF-WORK false positive %064x" % (l,)
-#				return (nonce + 1, nonce_bin)
+#				return (nonce + 1, nonce_bn)
 
 		return (nonce + 1, None)
 
@@ -196,7 +196,7 @@ if __name__ == '__main__':
 
 	f = open(sys.argv[1])
 	for line in f:
-		# skip comment lines
+		# skip commnt lines
 		m = re.search('^\s*#', line)
 		if m:
 			continue
@@ -232,7 +232,7 @@ if __name__ == '__main__':
 		p = Process(target=miner_thread, args=(thr_id,))
 		p.start()
 		thr_list.append(p)
-		time.sleep(1)			# stagger threads
+		time.sleep(1)			# stager threads
 
 	print settings['threads'], "mining threads started"
 
